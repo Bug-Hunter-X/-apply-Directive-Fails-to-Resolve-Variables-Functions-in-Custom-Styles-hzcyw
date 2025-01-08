@@ -1,0 +1,24 @@
+The `@apply` directive's behavior with variables and functions can vary among versions of Tailwind CSS. A better solution would be to avoid using variables and functions directly within `@apply` directives. Instead, apply the styles directly in your CSS or using a utility class that combines the desired styles.  For example:
+
+```css
+:root {
+  --primary-color: #007bff;
+}
+
+.my-custom-style {
+  background-color: var(--primary-color); /* Direct application */
+  /* or  */
+  @apply bg-blue-500; /* Use pre-defined classes */
+}
+
+/* Or create a utility class combining styles */
+.primary-bg {
+  @apply bg-blue-500;
+}
+
+.my-component {
+  @apply primary-bg; 
+}
+```
+
+This approach ensures consistent style application regardless of potential issues with variable or function resolution within `@apply`.
